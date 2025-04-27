@@ -23,19 +23,8 @@
             <a href="#music" class="cta-button">Listen Now</a>
         </div>
     </header>
-     <section id="about" class="section">
-     <div class="container">
-   
-        <div style="max-width: 600px; margin: 0 auto;">
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
-
-  <div class="fb-page" 
-       data-href="https://www.facebook.com/FlowStateAchieved/about/" 
-       data-width="500">
-  </div>
-</div>
-       
+    <section id="about" class="section">
+        <div class="container">
             <h2>About FlowState</h2>
             <p>FlowState is an electronic music artist hailing from the vibrant scene of Los Angeles, California. Known for intricate sound design, driving rhythms, and captivating melodies, FlowState creates immersive sonic journeys that bridge the gap between euphoric highs and introspective depths. Drawing inspiration from the energy of the LA nights and the vastness of the digital frontier, FlowState's music is a testament to the power of sound to transport the listener to another dimension.</p>
         </div>
@@ -69,16 +58,28 @@
     </section>
     <section id="player" class="section">
         <div class="container">
-            <h2>Audio Player</h2>
-            <p>Upload your own audio file to visualize the spectrum:</p>
+            <h2>Audio Player & Visualizers</h2>
+            <p>Upload your own audio file to visualize the spectrum and waveform:</p>
             <div class="audio-player-container">
                 <input type="file" id="audio-file-input" accept="audio/*">
                 <label for="audio-file-input" class="custom-file-upload link-button">
                     Choose Audio File
                 </label>
-                <audio id="audio-element" controls></audio>
-                <canvas id="spectrum-analyzer-canvas"></canvas>
                 <p class="placeholder-note" id="file-name-display"></p>
+                <audio id="audio-element" controls></audio>
+                <div class="visualizer-canvases">
+                    <canvas id="spectrum-analyzer-canvas"></canvas>
+                    <canvas id="waveform-analyzer-canvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="visualizer" class="section dark-section">
+        <div class="container">
+            <h2>Interactive Visualizer</h2>
+            <p>Experience dynamic visuals influenced by the music (or just enjoy the abstract art!).</p>
+            <div class="visualizer-container">
+                <canvas id="abstract-visualizer-canvas"></canvas>
             </div>
         </div>
     </section>
@@ -100,20 +101,18 @@
                     <li><a href="#" class="link-button">Email</a></li>
                 </ul>
             </div>
-            <div style="max-width: 600px; margin: 0 auto;">
-  <div id="fb-root"></div>
-  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v19.0"></script>
-
-  <div class="fb-post" 
-       data-href="https://www.facebook.com/FlowStateAchieved" 
-       data-width="800">
-  </div>
-</div>
-
+            <div class="facebook-embed">
+                <h3>Facebook Feed</h3>
+                <div class="embed-container">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" title="Facebook Feed Embed"></iframe>
+                </div>
+                <p class="placeholder-note">Note: Replace the placeholder URL above with FlowState's actual Facebook Page Plugin code.</p>
+            </div>
+        </div>
     </section>
     <footer>
         <div class="container">
-            <p>&copy; 2025 FlowState. All rights reserved. Designed by <a href="https://www.holisticgrowthmarketing.com" aria-label="visit Holistic Growth Marketing">Holistic Growth Marketing</a></p>
+            <p>&copy; 2023 FlowState. All rights reserved.</p>
         </div>
     </footer>
     <script src="script.js"></script>
