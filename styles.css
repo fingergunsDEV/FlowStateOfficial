@@ -347,20 +347,47 @@ a:hover {
     color: var(--color-background); /* Control icon color */
 }
 
-#spectrum-analyzer-canvas {
+.visualizer-canvases {
+    display: flex;
+    flex-direction: column; /* Stack canvases by default */
+    gap: 10px;
     width: 100%;
-    max-width: 600px;
-    height: 200px; /* Fixed height for analyzer */
+    max-width: 600px; /* Align with audio element */
+}
+
+#spectrum-analyzer-canvas,
+#waveform-analyzer-canvas {
+    width: 100%;
+    height: 150px; /* Reduced height slightly to fit two */
     border: 1px solid var(--color-accent-light);
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
-    margin-top: 10px;
 }
 
 #file-name-display {
     font-size: 0.9em;
     color: rgba(255, 255, 255, 0.7);
     min-height: 1.5em; /* Reserve space even when empty */
+    text-align: center;
+    word-break: break-all; /* Prevent long file names from overflowing */
+}
+
+/* Interactive Visualizer Section */
+.visualizer-container {
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#abstract-visualizer-canvas {
+    width: 100%;
+    height: 400px; /* Set a height for the abstract visualizer */
+    display: block;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker background */
 }
 
 /* Footer */
@@ -389,6 +416,17 @@ footer p {
 }
 
 /* Responsive adjustments */
+@media (min-width: 768px) {
+     .visualizer-canvases {
+          flex-direction: row; /* Side-by-side on larger screens */
+          height: 200px; /* Restore combined height */
+     }
+     #spectrum-analyzer-canvas,
+     #waveform-analyzer-canvas {
+          height: 100%; /* Take full height of container */
+     }
+}
+
 @media (max-width: 768px) {
     h1 {
         font-size: 2.5em;
