@@ -1,4 +1,5 @@
 :root {
+    /* Default Theme (Neon Pulse) */
     --color-background: #121212;
     --color-text: #ffffff;
     --color-primary: #00ffff; /* Cyan */
@@ -6,9 +7,52 @@
     --color-accent-light: #00aaff; /* Lighter blue */
     --color-accent-dark: #aa00ff; /* Purple */
     --color-dark-section: #1c1c1c;
-
     --font-heading: 'Montserrat', sans-serif;
     --font-body: 'Roboto Mono', monospace;
+}
+
+/* Theme: Cyberpunk City */
+body.theme-cyberpunk {
+    --color-background: #0a0a15;
+    --color-text: #e0e0e0;
+    --color-primary: #ff3385; /* Hot Pink */
+    --color-secondary: #33ffc1; /* Teal/Cyan */
+    --color-accent-light: #6a0dad; /* Deep Purple */
+    --color-accent-dark: #e91e63; /* Raspberry */
+    --color-dark-section: #1a1a2e;
+}
+
+/* Theme: Matrix Glitch */
+body.theme-matrix {
+    --color-background: #000000;
+    --color-text: #00ff00; /* Neon Green */
+    --color-primary: #00cc00; /* Darker Green */
+    --color-secondary: #00aa00; /* Even Darker Green */
+    --color-accent-light: #333333; /* Dark Grey */
+    --color-accent-dark: #111111; /* Very Dark Grey */
+    --color-dark-section: #080808;
+}
+
+/* Theme: Synthwave Sunset */
+body.theme-synthwave {
+    --color-background: #190a23;
+    --color-text: #ffe066; /* Mellow Yellow */
+    --color-primary: #ff66b2; /* Bright Pink */
+    --color-secondary: #66d9ef; /* Sky Blue */
+    --color-accent-light: #a624a6; /* Vibrant Purple */
+    --color-accent-dark: #f92a1c; /* Orange-Red */
+    --color-dark-section: #2f1a3b;
+}
+
+/* Theme: Hacker Terminal */
+body.theme-hacker {
+    --color-background: #050505;
+    --color-text: #ffffff; /* White */
+    --color-primary: #00ff80; /* Emerald Green */
+    --color-secondary: #ff0000; /* Error Red */
+    --color-accent-light: #808080; /* Grey */
+    --color-accent-dark: #333333; /* Dark Grey */
+    --color-dark-section: #101010;
 }
 
 body {
@@ -18,6 +62,7 @@ body {
     background-color: var(--color-background);
     line-height: 1.6;
     overflow-x: hidden; /* Prevent horizontal scroll from animations */
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
 }
 
 h1, h2, h3 {
@@ -25,6 +70,7 @@ h1, h2, h3 {
     color: var(--color-primary);
     text-align: center;
     margin-bottom: 1em;
+    transition: color 0.5s ease; /* Smooth theme transition */
 }
 
 h1 {
@@ -32,6 +78,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+    transition: text-shadow 0.5s ease; /* Smooth theme transition */
 }
 
 h2 {
@@ -63,6 +110,37 @@ a:hover {
     padding: 0 20px;
 }
 
+/* Theme Toggle Button */
+.theme-toggle-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 100;
+    background: var(--color-dark-section);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.theme-toggle-button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-background);
+    transform: rotate(360deg);
+}
+
+.theme-toggle-button svg {
+    width: 24px;
+    height: 24px;
+}
+
 /* Hero Section */
 .hero {
     position: relative;
@@ -72,8 +150,7 @@ a:hover {
     align-items: center;
     text-align: center;
     overflow: hidden;
-    /* Added space for fixed header if needed later, adjust as necessary */
-    padding-top: 0; /* Remove padding if added for fixed header */
+    padding-top: 0;
 }
 
 .hero-background {
@@ -82,49 +159,38 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1; /* Placed above the particle canvas */
-    /* Added background image styles */
+    z-index: -1;
     background-image: url('/tunnel.gif');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
-    /* Optional: Add a slight overlay to help text stand out */
-    background-color: rgba(0, 0, 0, 0.3); /* Dark overlay */
-    background-blend-mode: overlay; /* Blend the overlay */
+    background-color: rgba(0, 0, 0, 0.3);
+    background-blend-mode: overlay;
 }
 
 .hero-background img {
-    /* Style for the img tag if used directly instead of background-image */
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensure GIF covers the area */
-    /* Remove display: none as we are using the img tag */
+    display: none; /* Hide the img tag, using background-image now */
 }
 
 /* SVG Shape Animation */
-/* Keyframes can be kept in case they are used elsewhere or for future additions */
 @keyframes pulse {
     0% { transform: scale(1); opacity: 0.8; }
     50% { transform: scale(1.2); opacity: 1; }
     100% { transform: scale(1); opacity: 0.8; }
 }
 
-.shape-animation {
-    /* This class is no longer applied to SVG shapes in the hero, but kept */
-    /* animation: pulse 2s infinite ease-in-out alternate; */
-}
-
 .hero-content {
     position: relative;
     z-index: 1;
     text-shadow: 0 0 15px rgba(0,255,255,0.5), 0 0 25px rgba(255,0,255,0.5);
+    transition: text-shadow 0.5s ease; /* Smooth theme transition */
 }
 
 .tagline {
     font-size: 1.5em;
     margin-top: -1em;
     margin-bottom: 2em;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.8); /* Tagline color remains close to white/light grey */
 }
 
 .cta-button {
@@ -136,14 +202,14 @@ a:hover {
     font-family: var(--font-heading);
     text-transform: uppercase;
     border-radius: 5px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 0 15px rgba(0,255,255,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s ease, color 0.5s ease;
+    box-shadow: 0 0 15px var(--color-primary); /* Use primary color for shadow */
 }
 
 .cta-button:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px rgba(0,255,255,0.8);
-    color: var(--color-background); /* Keep text dark */
+    box-shadow: 0 0 25px var(--color-primary);
+    color: var(--color-background);
 }
 
 /* Sections */
@@ -153,6 +219,7 @@ a:hover {
 
 .dark-section {
     background-color: var(--color-dark-section);
+    transition: background-color 0.5s ease; /* Smooth theme transition */
 }
 
 .music-links ul,
@@ -163,6 +230,7 @@ a:hover {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    margin-bottom: 40px; /* Add space below links */
 }
 
 .link-button {
@@ -175,12 +243,124 @@ a:hover {
      text-transform: uppercase;
      border-radius: 5px;
      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+     cursor: pointer; /* Add cursor pointer */
 }
 
 .link-button:hover {
     background-color: var(--color-secondary);
     color: var(--color-background);
     border-color: var(--color-secondary);
+}
+
+/* Embed Styles */
+.music-embeds,
+.facebook-embed {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.music-embeds h3,
+.facebook-embed h3 {
+     font-size: 1.8em;
+     margin-bottom: 1em;
+     color: var(--color-accent-light); /* Use an accent color for embed titles */
+}
+
+.embed-container {
+    margin: 20px auto;
+    max-width: 800px; /* Limit width of embeds */
+    width: 100%;
+    /* Ensure aspect ratio for responsive iframes if needed */
+    /* position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; */
+    background-color: rgba(0, 0, 0, 0.2); /* Slight background for embeds */
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.embed-container iframe {
+    width: 100%;
+    height: auto; /* Allow height to adjust */
+    min-height: 166px; /* Minimum height for Soundcloud */
+    display: block; /* Remove extra space below iframe */
+    border: none;
+}
+
+.facebook-embed .embed-container {
+     max-width: 340px; /* Facebook default widget width */
+     margin-left: auto;
+     margin-right: auto;
+}
+
+.facebook-embed .embed-container iframe {
+     min-height: 500px; /* Facebook default widget height */
+}
+
+.placeholder-note {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: 15px;
+}
+
+/* Audio Player Styles */
+.audio-player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--color-dark-section);
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+#audio-file-input {
+    display: none; /* Hide the default file input */
+}
+
+.custom-file-upload {
+    /* Inherits styles from .link-button */
+    margin-bottom: 0; /* Adjust margin if needed */
+}
+
+#audio-element {
+    width: 100%; /* Make audio element responsive */
+    max-width: 600px;
+    filter: invert(1) hue-rotate(180deg); /* Basic styling, might need vendor prefixes or more specific controls styling */
+}
+
+/* Attempt to style default audio controls (limited CSS support) */
+/* Vendor prefixes may be needed for more consistent styling */
+#audio-element::-webkit-media-controls-panel {
+  background-color: var(--color-primary);
+  color: var(--color-background); /* Text color */
+}
+
+#audio-element::-webkit-media-controls-play-button,
+#audio-element::-webkit-media-controls-volume-slider,
+#audio-element::-webkit-media-controls-current-time-display,
+#audio-element::-webkit-media-controls-time-remaining-display,
+#audio-element::-webkit-media-controls-mute-button,
+#audio-element::-webkit-media-controls-timeline {
+    color: var(--color-background); /* Control icon color */
+}
+
+#spectrum-analyzer-canvas {
+    width: 100%;
+    max-width: 600px;
+    height: 200px; /* Fixed height for analyzer */
+    border: 1px solid var(--color-accent-light);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+#file-name-display {
+    font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.7);
+    min-height: 1.5em; /* Reserve space even when empty */
 }
 
 /* Footer */
@@ -190,6 +370,7 @@ footer {
     text-align: center;
     padding: 40px 0;
     font-size: 0.9em;
+    transition: background-color 0.5s ease, color 0.5s ease; /* Smooth theme transition */
 }
 
 footer p {
@@ -239,5 +420,22 @@ footer p {
     .link-button {
         width: 180px; /* Give buttons a fixed width on small screens */
         text-align: center;
+    }
+
+    .theme-toggle-button {
+        width: 35px;
+        height: 35px;
+        top: 15px;
+        right: 15px;
+    }
+
+    .theme-toggle-button svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .music-embeds h3,
+    .facebook-embed h3 {
+        font-size: 1.5em;
     }
 }
