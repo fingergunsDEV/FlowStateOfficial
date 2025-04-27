@@ -9,10 +9,13 @@
 </head>
 <body>
     <canvas id="particle-canvas"></canvas>
+    <button id="theme-toggle" class="theme-toggle-button">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+        </svg>
+    </button>
     <header class="hero">
         <div class="hero-background">
-            <!-- Replaced with GIF background -->
-            <img src="/tunnel.gif" alt="Background GIF">
         </div>
         <div class="hero-content">
             <h1>FlowState</h1>
@@ -20,14 +23,12 @@
             <a href="#music" class="cta-button">Listen Now</a>
         </div>
     </header>
-
     <section id="about" class="section">
         <div class="container">
             <h2>About FlowState</h2>
             <p>FlowState is an electronic music artist hailing from the vibrant scene of Los Angeles, California. Known for intricate sound design, driving rhythms, and captivating melodies, FlowState creates immersive sonic journeys that bridge the gap between euphoric highs and introspective depths. Drawing inspiration from the energy of the LA nights and the vastness of the digital frontier, FlowState's music is a testament to the power of sound to transport the listener to another dimension.</p>
         </div>
     </section>
-
     <section id="music" class="section dark-section">
         <div class="container">
             <h2>Music</h2>
@@ -39,40 +40,69 @@
                     <li><a href="#" class="link-button">SoundCloud</a></li>
                     <li><a href="#" class="link-button">Bandcamp</a></li>
                 </ul>
-                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/artist/42Ch7MCWxCmPqRY0TMLfkX?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+            </div>
+            <div class="music-embeds">
+                <h3>Featured Tracks & Players</h3>
+                <div class="embed-container">
+                    <iframe src="https://open.spotify.com/embed/artist/exampleartistid?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify Embed"></iframe>
+                </div>
+                <div class="embed-container">
+                    <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/exampletrackid&color=%23ff005d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true" title="SoundCloud Embed"></iframe>
+                </div>
+                <div class="embed-container">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/examplevideoid" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+                <p class="placeholder-note">Note: Replace the placeholder URLs above with FlowState's actual embed codes.</p>
             </div>
         </div>
     </section>
-
-     <section id="events" class="section">
+    <section id="player" class="section">
+        <div class="container">
+            <h2>Audio Player</h2>
+            <p>Upload your own audio file to visualize the spectrum:</p>
+            <div class="audio-player-container">
+                <input type="file" id="audio-file-input" accept="audio/*">
+                <label for="audio-file-input" class="custom-file-upload link-button">
+                    Choose Audio File
+                </label>
+                <audio id="audio-element" controls></audio>
+                <canvas id="spectrum-analyzer-canvas"></canvas>
+                <p class="placeholder-note" id="file-name-display"></p>
+            </div>
+        </div>
+    </section>
+    <section id="events" class="section">
         <div class="container">
             <h2>Events</h2>
             <p>No upcoming events scheduled at the moment. Stay tuned for tour dates and performances in Los Angeles and beyond!</p>
-             <!-- Potential list of events later -->
         </div>
     </section>
-
     <section id="contact" class="section dark-section">
         <div class="container">
             <h2>Connect</h2>
             <p>Follow FlowState on social media and get in touch:</p>
-             <div class="social-links">
+            <div class="social-links">
                 <ul>
                     <li><a href="#" class="link-button">Instagram</a></li>
                     <li><a href="#" class="link-button">Twitter</a></li>
                     <li><a href="#" class="link-button">Facebook</a></li>
                     <li><a href="#" class="link-button">Email</a></li>
                 </ul>
-             </div>
+            </div>
+            <div class="facebook-embed">
+                <h3>Facebook Feed</h3>
+                <div class="embed-container">
+                    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffacebook&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" title="Facebook Feed Embed"></iframe>
+                </div>
+                <p class="placeholder-note">Note: Replace the placeholder URL above with FlowState's actual Facebook Page Plugin code.</p>
+            </div>
         </div>
     </section>
-
     <footer>
         <div class="container">
             <p>&copy; 2023 FlowState. All rights reserved.</p>
         </div>
     </footer>
-
     <script src="script.js"></script>
 </body>
 </html>
